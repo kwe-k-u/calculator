@@ -1,3 +1,4 @@
+import 'package:calculator/UI/HistoryScreen.dart';
 import 'package:calculator/UI/Widgets/EntryScreen.dart';
 import 'package:calculator/UI/Widgets/KeyPad.dart';
 import 'package:flutter/material.dart';
@@ -16,8 +17,20 @@ class _CalculationScreenState extends State<CalculationScreen> {
         backgroundColor: Colors.transparent,
         leading: Icon(Icons.menu),
         actions: [
-          Icon(Icons.history)
+
+          IconButton(
+            icon: Icon(Icons.history),
+            onPressed: (){
+              Navigator.push(context,
+                  MaterialPageRoute(
+                      builder: (context)=> HistoryScreen())
+              );
+            },
+          )
         ],
+      ),
+      drawer: Drawer(
+        child: HistoryScreen(),
       ),
       body: Container(
         child: Column(

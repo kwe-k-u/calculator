@@ -146,6 +146,7 @@ Widget _Row2(BuildContext context){
       KeyButton(
         context: context,
         character: "-",
+        keyType: KeyType.operation,
         color: Colors.primaries.elementAt(3),
       ),
     ],
@@ -222,9 +223,9 @@ Widget _Row4(BuildContext context){
 
 
       //Delete
-      KeyButton(
+      iconKeyButton(
         context: context,
-        character: "del", //todo make a backspace icon
+        icon: Icons.backspace_outlined, //todo make a backspace icon
           keyType: KeyType.action
       ),
 

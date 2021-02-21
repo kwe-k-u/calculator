@@ -22,7 +22,7 @@ Widget EntryScreen(BuildContext context){
 
 TextStyle _topTextStyle = TextStyle(
 
-    fontSize: 45.0
+    fontSize: 30.0
 );
 
 
@@ -30,5 +30,5 @@ TextStyle _topTextStyle = TextStyle(
 
 
 TextStyle _bottomTextStyle = TextStyle(
-  fontSize: 60.0
+  fontSize: 50.0
 );
