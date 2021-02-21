@@ -32,6 +32,7 @@ Widget _SymbolsRow(BuildContext context){
       KeyButton(
         context: context,
         color: Colors.primaries.elementAt(3),
+        keyType: KeyType.constant,
         character: "><", //todo replace with pi
       ),
 
@@ -41,6 +42,7 @@ Widget _SymbolsRow(BuildContext context){
         context: context,
         color: Colors.primaries.elementAt(3),
         character: "(",
+        keyType: KeyType.symbol,
       ),
 
 
@@ -49,6 +51,7 @@ Widget _SymbolsRow(BuildContext context){
         context: context,
         color: Colors.primaries.elementAt(3),
         character: ")",
+        keyType: KeyType.symbol,
       ),
 
 
@@ -59,6 +62,7 @@ Widget _SymbolsRow(BuildContext context){
         color: Colors.primaries.elementAt(3),
         context: context,
         character: "/",
+        keyType: KeyType.operation,
       ),
     ],
   );
@@ -67,7 +71,6 @@ Widget _SymbolsRow(BuildContext context){
 
 
 Widget _Row1(BuildContext context){
-  double width  =MediaQuery.of(context).size.width * 0.25;
 
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -76,6 +79,7 @@ Widget _Row1(BuildContext context){
       KeyButton(
         context: context,
         character: "7",
+        keyType: KeyType.number,
       ),
 
 
@@ -83,6 +87,7 @@ Widget _Row1(BuildContext context){
       KeyButton(
         context: context,
         character: "8",
+        keyType: KeyType.number,
       ),
 
 
@@ -90,6 +95,7 @@ Widget _Row1(BuildContext context){
       KeyButton(
         context: context,
         character: "9",
+        keyType: KeyType.number,
       ),
 
 
@@ -98,6 +104,7 @@ Widget _Row1(BuildContext context){
       KeyButton(
         context: context,
         character: "x",
+        keyType: KeyType.operation,
         color: Colors.primaries.elementAt(3),
       ),
     ],
@@ -109,7 +116,6 @@ Widget _Row1(BuildContext context){
 
 
 Widget _Row2(BuildContext context){
-  double width  =MediaQuery.of(context).size.width * 0.25;
 
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -117,18 +123,21 @@ Widget _Row2(BuildContext context){
       KeyButton(
         context: context,
         character: "4",
+          keyType: KeyType.number
       ),
 
 
       KeyButton(
         context: context,
         character: "5",
+          keyType: KeyType.number
       ),
 
 
       KeyButton(
         context: context,
         character: "6",
+          keyType: KeyType.number
       ),
 
 
@@ -157,18 +166,21 @@ Widget _Row3(BuildContext context){
       KeyButton(
         context: context,
         character: "1",
+          keyType: KeyType.number
       ),
 
 
       KeyButton(
         context: context,
         character: "2",
+          keyType: KeyType.number
       ),
 
 
       KeyButton(
         context: context,
         character: "3",
+          keyType: KeyType.number
       ),
 
 
@@ -178,6 +190,7 @@ Widget _Row3(BuildContext context){
         context: context,
         character: "+",
         color: Colors.primaries.elementAt(3),
+        keyType: KeyType.operation
       ),
     ],
   );
@@ -197,19 +210,22 @@ Widget _Row4(BuildContext context){
       KeyButton(
         context: context,
         character: "0",
+          keyType: KeyType.number
       ),
 
 
       KeyButton(
         context: context,
         character: ".",
+          keyType: KeyType.symbol
       ),
 
 
       //Delete
       KeyButton(
         context: context,
-        character: "del", //todo make a backspace ico
+        character: "del", //todo make a backspace icon
+          keyType: KeyType.action
       ),
 
 
@@ -220,6 +236,7 @@ Widget _Row4(BuildContext context){
         context: context,
         color: Colors.pinkAccent,
         character: "=",
+          keyType: KeyType.action
       ),
     ],
   );
