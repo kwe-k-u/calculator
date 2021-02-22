@@ -16,9 +16,10 @@ enum KeyType{
 
 Widget KeyButton({
   @required BuildContext context,
-  @required String character,
+  @required String value,
   Color color = Colors.black,
   Color keyColor = Colors.white,
+  Function onpressed ,
   @required KeyType keyType
 
 }) {
@@ -34,10 +35,7 @@ Widget KeyButton({
 
 
   return Container(
-    width: MediaQuery
-        .of(context)
-        .size
-        .width * 0.20,
+    width: MediaQuery.of(context).size.width * 0.20,
     margin: EdgeInsets.all(8.0),
     child: RaisedButton(
       padding: EdgeInsets.all(8.0),
@@ -47,7 +45,7 @@ Widget KeyButton({
         borderRadius: BorderRadius.circular(108.0),
       ),
       child: Text(
-          character,
+          value,
           style: _textStyle
       ),
       onPressed: () {

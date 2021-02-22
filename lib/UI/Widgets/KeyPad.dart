@@ -33,7 +33,7 @@ Widget _SymbolsRow(BuildContext context){
         context: context,
         color: Colors.primaries.elementAt(3),
         keyType: KeyType.constant,
-        character: "><", //todo replace with pi
+        value: "><", //todo replace with pi
       ),
 
 
@@ -41,7 +41,7 @@ Widget _SymbolsRow(BuildContext context){
       KeyButton(
         context: context,
         color: Colors.primaries.elementAt(3),
-        character: "(",
+        value: "(",
         keyType: KeyType.symbol,
       ),
 
@@ -50,7 +50,7 @@ Widget _SymbolsRow(BuildContext context){
       KeyButton(
         context: context,
         color: Colors.primaries.elementAt(3),
-        character: ")",
+        value: ")",
         keyType: KeyType.symbol,
       ),
 
@@ -61,7 +61,7 @@ Widget _SymbolsRow(BuildContext context){
       KeyButton(
         color: Colors.primaries.elementAt(3),
         context: context,
-        character: "/",
+        value: "/",
         keyType: KeyType.operation,
       ),
     ],
@@ -78,7 +78,7 @@ Widget _Row1(BuildContext context){
       //7
       KeyButton(
         context: context,
-        character: "7",
+        value: "7",
         keyType: KeyType.number,
       ),
 
@@ -86,7 +86,7 @@ Widget _Row1(BuildContext context){
       //8
       KeyButton(
         context: context,
-        character: "8",
+        value: "8",
         keyType: KeyType.number,
       ),
 
@@ -94,7 +94,7 @@ Widget _Row1(BuildContext context){
       //9
       KeyButton(
         context: context,
-        character: "9",
+        value: "9",
         keyType: KeyType.number,
       ),
 
@@ -103,7 +103,7 @@ Widget _Row1(BuildContext context){
 
       KeyButton(
         context: context,
-        character: "x",
+        value: "x",
         keyType: KeyType.operation,
         color: Colors.primaries.elementAt(3),
       ),
@@ -122,21 +122,21 @@ Widget _Row2(BuildContext context){
     children: [
       KeyButton(
         context: context,
-        character: "4",
+        value: "4",
           keyType: KeyType.number
       ),
 
 
       KeyButton(
         context: context,
-        character: "5",
+        value: "5",
           keyType: KeyType.number
       ),
 
 
       KeyButton(
         context: context,
-        character: "6",
+        value: "6",
           keyType: KeyType.number
       ),
 
@@ -145,7 +145,7 @@ Widget _Row2(BuildContext context){
 
       KeyButton(
         context: context,
-        character: "-",
+        value: "-",
         keyType: KeyType.operation,
         color: Colors.primaries.elementAt(3),
       ),
@@ -166,21 +166,21 @@ Widget _Row3(BuildContext context){
     children: [
       KeyButton(
         context: context,
-        character: "1",
+        value: "1",
           keyType: KeyType.number
       ),
 
 
       KeyButton(
         context: context,
-        character: "2",
+        value: "2",
           keyType: KeyType.number
       ),
 
 
       KeyButton(
         context: context,
-        character: "3",
+        value: "3",
           keyType: KeyType.number
       ),
 
@@ -189,7 +189,7 @@ Widget _Row3(BuildContext context){
 
       KeyButton(
         context: context,
-        character: "+",
+        value: "+",
         color: Colors.primaries.elementAt(3),
         keyType: KeyType.operation
       ),
@@ -210,14 +210,14 @@ Widget _Row4(BuildContext context){
     children: [
       KeyButton(
         context: context,
-        character: "0",
+        value: "0",
           keyType: KeyType.number
       ),
 
 
       KeyButton(
         context: context,
-        character: ".",
+          value: ".",
           keyType: KeyType.symbol
       ),
 
@@ -236,7 +236,7 @@ Widget _Row4(BuildContext context){
       KeyButton(
         context: context,
         color: Colors.pinkAccent,
-        character: "=",
+        value: "=",
           keyType: KeyType.action
       ),
     ],

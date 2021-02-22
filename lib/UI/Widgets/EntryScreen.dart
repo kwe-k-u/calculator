@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-Widget EntryScreen(BuildContext context){
+Widget EntryScreen(BuildContext context, String string){
+
   return Container(
     padding: EdgeInsets.all(8.0),
     width: MediaQuery.of(context).size.width,
@@ -10,7 +11,7 @@ Widget EntryScreen(BuildContext context){
       crossAxisAlignment: CrossAxisAlignment.end,
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Text("25*4", style: _topTextStyle,),
+        Text(string, style: _topTextStyle,),
         SizedBox(height: MediaQuery.of(context).size.height*0.03,),
         Text("100", style: _bottomTextStyle,),
       ],
