@@ -37,7 +37,7 @@ Widget _SymbolsRow(BuildContext context,Entry entry){
         entry: entry,
         context: context,
         color: Colors.primaries.elementAt(3),
-        character: new Character(keyType: KeyType.constant, value: "π"), //todo replace with pi
+        character: new Character(keyType: KeyType.constant, value: "π"),
       ),
 
 

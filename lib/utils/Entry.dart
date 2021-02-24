@@ -1,6 +1,7 @@
 
 import 'package:calculator/UI/Widgets/KeyPadButton.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 ///A class to store the calculation data
 class Entry extends ChangeNotifier{
@@ -15,7 +16,6 @@ class Entry extends ChangeNotifier{
     String _string = "";
     for (Character char in calculation)
       _string += char.value;
-
     return _string;
   }
 
@@ -96,8 +96,8 @@ class Entry extends ChangeNotifier{
         operands.add(_parseNumber(_temp));
       }
     }
-    print("operators ${operators.toString()}");
-    print("operands ${operands.toString()}");
+    // print("operators ${operators.toString()}");
+    // print("operands ${operands.toString()}");
 
 
     for (Character operation in operators){
