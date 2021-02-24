@@ -83,6 +83,7 @@ class IconKeyButton extends StatelessWidget {
   Color keyColor = Colors.white;
   KeyType keyType;
   Function onPressed;
+  Function onLongPressed;
 
 
   IconKeyButton({
@@ -92,6 +93,7 @@ class IconKeyButton extends StatelessWidget {
     this.keyColor,
     @required this.keyType,
     this.onPressed,
+    this.onLongPressed,
   });
 
 
@@ -111,6 +113,7 @@ class IconKeyButton extends StatelessWidget {
         ),
         child: Icon(icon,color: keyColor,),
         onPressed: onPressed,
+        onLongPress: onLongPressed,
       ),
     );
   }

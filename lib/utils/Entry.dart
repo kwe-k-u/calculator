@@ -47,6 +47,8 @@ class Entry extends ChangeNotifier{
 
   clearAll(){
     this._calculation = [];
+    this._result = 0;
+
     notifyListeners();
   }
 
