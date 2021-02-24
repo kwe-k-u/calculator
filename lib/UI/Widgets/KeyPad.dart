@@ -29,8 +29,6 @@ class KeyPad extends StatelessWidget {
 
 
 Widget _SymbolsRow(BuildContext context,Entry entry){
-  double width  =MediaQuery.of(context).size.width * 0.25;
-
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
@@ -165,7 +163,6 @@ Widget _Row2(BuildContext context, Entry entry){
 
 
 Widget _Row3(BuildContext context, Entry entry){
-  double width  =MediaQuery.of(context).size.width * 0.25;
 
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -209,7 +206,6 @@ Widget _Row3(BuildContext context, Entry entry){
 
 
 Widget _Row4(BuildContext context, Entry entry){
-  double width  =MediaQuery.of(context).size.width * 0.25;
 
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -229,10 +225,13 @@ Widget _Row4(BuildContext context, Entry entry){
 
 
       //Delete
-      iconKeyButton(
+      IconKeyButton(
         context: context,
         icon: Icons.backspace_outlined, //todo make a backspace icon
-          keyType: KeyType.action
+          keyType: KeyType.action,
+        onPressed: (){
+          entry.removeCharacter();
+        },
       ),
 
 
@@ -243,7 +242,10 @@ Widget _Row4(BuildContext context, Entry entry){
           context: context,
           color: Colors.pinkAccent,
           entry: entry,
-          character: new Character(value: "=", keyType: KeyType.action)
+          character: new Character(value: "=", keyType: KeyType.action),
+        onPressed: (){
+
+        },
       ),
     ],
   );

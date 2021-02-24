@@ -29,7 +29,7 @@ class _EntryScreenState extends State<EntryScreen> {
             children: [
               Text(widget.entry.calculationString, style: _topTextStyle,),
               SizedBox(height: MediaQuery.of(context).size.height*0.03,),
-              Text("100", style: _bottomTextStyle,),
+              Text(widget.entry.result.toStringAsFixed(2), style: _bottomTextStyle,),
             ],
           ),
         );
