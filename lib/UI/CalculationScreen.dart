@@ -1,7 +1,9 @@
 import 'package:calculator/UI/HistoryScreen.dart';
 import 'package:calculator/UI/Widgets/EntryScreen.dart';
 import 'package:calculator/UI/Widgets/KeyPad.dart';
+import 'package:calculator/utils/Entry.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 class CalculationScreen extends StatefulWidget {
@@ -21,13 +23,21 @@ class _CalculationScreenState extends State<CalculationScreen> {
 
 
       body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            EntryScreen(string: _string),
+        child: ChangeNotifierProvider(
+          create: (context) => Entry(),
 
-            KeyPad()
-          ],
+
+          child: Consumer<Entry>(
+            builder: (context,entry,child){
+              return Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  EntryScreen(entry: entry),
+                  KeyPad(entry)
+                ],
+              );
+            },
+          ),
         ),
       ),
     );

@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 
 class EntryScreen extends StatefulWidget {
-  String string;
+  Entry entry;
 
-  EntryScreen({this.string});
+  EntryScreen({this.entry});
 
   @override
   _EntryScreenState createState() => _EntryScreenState();
@@ -24,7 +24,7 @@ class _EntryScreenState extends State<EntryScreen> {
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Text(widget.string, style: _topTextStyle,),
+          Text(widget.entry.toString(), style: _topTextStyle,),
           SizedBox(height: MediaQuery.of(context).size.height*0.03,),
           Text("100", style: _bottomTextStyle,),
         ],

@@ -1,8 +1,14 @@
 
 import 'package:calculator/UI/Widgets/KeyPadButton.dart';
+import 'package:calculator/utils/Entry.dart';
 import 'package:flutter/material.dart';
 
 class KeyPad extends StatelessWidget {
+  Entry entry;
+
+  KeyPad(this.entry);
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -234,9 +240,9 @@ Widget _Row4(BuildContext context){
 
       //Equal to
       KeyButton(
-        context: context,
-        color: Colors.pinkAccent,
-        value: "=",
+          context: context,
+          color: Colors.pinkAccent,
+          value: "=",
           keyType: KeyType.action
       ),
     ],

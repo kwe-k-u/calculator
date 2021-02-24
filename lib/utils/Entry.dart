@@ -7,18 +7,25 @@ class Entry extends ChangeNotifier{
   List<Character> _calculation = [];
   double _result;
 
-  List<Character> get calculation => _calculation;
-  double get result => _result==null ? _result : 0;
+  List<Character> get calculation => _calculation;///Returns a list of characters used for calculation
+  double get result => _result==null ? 0 : _result;///Returns the result of the calculation
+
+  ///Returns the list of characters for the calculation as a string
+  String get calculationString {
+    String _string;
+    for (Character char in calculation)
+      _string+= char.value;
+
+    return _string;
+  }
 
 
   ///returns the entry as a string in the form a+b=c
   @override
   String toString() {
-    String cal = '';
-    for (Character char in calculation)
-      cal += char.value;
-    return "$cal = $result";
+    return "$calculationString = $result";
   }
+
 
 
   addCharacter(Character character){
@@ -34,7 +41,7 @@ class Entry extends ChangeNotifier{
 
 
   clearAll(){
-    this.cal_culation = [];
+    this._calculation = [];
     notifyListeners();
   }
 
