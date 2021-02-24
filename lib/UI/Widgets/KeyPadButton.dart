@@ -17,20 +17,20 @@ enum KeyType{
 
 class KeyButton extends StatelessWidget {
   BuildContext context;
-  String value;
+  Character character;
   Color color = Colors.black;
   Color keyColor = Colors.white;
   Function onPressed;
-  KeyType keyType;
+  Entry entry;
 
 
   KeyButton({
+    @required this.entry,
     @required this.context,
-    @required this.value,
+    @required this.character,
     this.color,
     this.keyColor,
     this.onPressed ,
-    @required this.keyType
 
   });
 
@@ -60,11 +60,11 @@ class KeyButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(108.0),
         ),
         child: Text(
-            this.value,
+            this.character.value,
             style: _textStyle
         ),
         onPressed: () {
-
+          entry.addCharacter(this.character);
         },
       ),
     );

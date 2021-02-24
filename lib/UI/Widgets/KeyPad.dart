@@ -15,11 +15,11 @@ class KeyPad extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          _SymbolsRow(context),
-          _Row1(context),
-          _Row2(context),
-          _Row3(context),
-          _Row4(context),
+          _SymbolsRow(context, entry),
+          _Row1(context, entry),
+          _Row2(context, entry),
+          _Row3(context, entry),
+          _Row4(context, entry),
         ],
       ),
     );
@@ -28,7 +28,7 @@ class KeyPad extends StatelessWidget {
 
 
 
-Widget _SymbolsRow(BuildContext context){
+Widget _SymbolsRow(BuildContext context,Entry entry){
   double width  =MediaQuery.of(context).size.width * 0.25;
 
   return Row(
@@ -36,10 +36,10 @@ Widget _SymbolsRow(BuildContext context){
     children: [
       //pi
       KeyButton(
+        entry: entry,
         context: context,
         color: Colors.primaries.elementAt(3),
-        keyType: KeyType.constant,
-        value: "><", //todo replace with pi
+        character: new Character(keyType: KeyType.constant, value: "><"), //todo replace with pi
       ),
 
 
@@ -47,8 +47,8 @@ Widget _SymbolsRow(BuildContext context){
       KeyButton(
         context: context,
         color: Colors.primaries.elementAt(3),
-        value: "(",
-        keyType: KeyType.symbol,
+        entry: entry,
+        character: new Character(value: "(", keyType: KeyType.symbol),
       ),
 
 
@@ -56,8 +56,8 @@ Widget _SymbolsRow(BuildContext context){
       KeyButton(
         context: context,
         color: Colors.primaries.elementAt(3),
-        value: ")",
-        keyType: KeyType.symbol,
+        entry: entry,
+        character: new Character(value: ")", keyType: KeyType.symbol),
       ),
 
 
@@ -67,8 +67,8 @@ Widget _SymbolsRow(BuildContext context){
       KeyButton(
         color: Colors.primaries.elementAt(3),
         context: context,
-        value: "/",
-        keyType: KeyType.operation,
+        entry: entry,
+        character: new Character(value: "/", keyType: KeyType.operation,)
       ),
     ],
   );
@@ -76,7 +76,7 @@ Widget _SymbolsRow(BuildContext context){
 
 
 
-Widget _Row1(BuildContext context){
+Widget _Row1(BuildContext context,Entry entry){
 
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -84,24 +84,24 @@ Widget _Row1(BuildContext context){
       //7
       KeyButton(
         context: context,
-        value: "7",
-        keyType: KeyType.number,
+        entry: entry,
+        character: new Character(value: "7", keyType: KeyType.number),
       ),
 
 
       //8
       KeyButton(
         context: context,
-        value: "8",
-        keyType: KeyType.number,
+        entry: entry,
+        character: new Character(value: "8", keyType: KeyType.number)
       ),
 
 
       //9
       KeyButton(
         context: context,
-        value: "9",
-        keyType: KeyType.number,
+        entry: entry,
+        character: new Character(value: "9", keyType: KeyType.number),
       ),
 
 
@@ -109,8 +109,8 @@ Widget _Row1(BuildContext context){
 
       KeyButton(
         context: context,
-        value: "x",
-        keyType: KeyType.operation,
+        entry: entry,
+        character: new Character(value: "x", keyType: KeyType.operation),
         color: Colors.primaries.elementAt(3),
       ),
     ],
@@ -121,29 +121,29 @@ Widget _Row1(BuildContext context){
 
 
 
-Widget _Row2(BuildContext context){
+Widget _Row2(BuildContext context, Entry entry){
 
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
       KeyButton(
+        entry: entry,
         context: context,
-        value: "4",
-          keyType: KeyType.number
+        character: new Character(value: "4", keyType: KeyType.number)
       ),
 
 
       KeyButton(
         context: context,
-        value: "5",
-          keyType: KeyType.number
+        entry: entry,
+        character: new Character(value: "5", keyType: KeyType.number)
       ),
 
 
       KeyButton(
         context: context,
-        value: "6",
-          keyType: KeyType.number
+        entry: entry,
+        character: new Character(value: "6", keyType: KeyType.number)
       ),
 
 
@@ -151,8 +151,8 @@ Widget _Row2(BuildContext context){
 
       KeyButton(
         context: context,
-        value: "-",
-        keyType: KeyType.operation,
+        entry: entry,
+        character: new Character(value: "-", keyType: KeyType.operation),
         color: Colors.primaries.elementAt(3),
       ),
     ],
@@ -164,7 +164,7 @@ Widget _Row2(BuildContext context){
 
 
 
-Widget _Row3(BuildContext context){
+Widget _Row3(BuildContext context, Entry entry){
   double width  =MediaQuery.of(context).size.width * 0.25;
 
   return Row(
@@ -172,32 +172,32 @@ Widget _Row3(BuildContext context){
     children: [
       KeyButton(
         context: context,
-        value: "1",
-          keyType: KeyType.number
+        entry: entry,
+        character: new Character(value: "1", keyType: KeyType.number)
       ),
 
 
       KeyButton(
         context: context,
-        value: "2",
-          keyType: KeyType.number
+        entry: entry,
+        character: new Character(value: "2", keyType: KeyType.number)
       ),
 
 
       KeyButton(
+        entry: entry,
         context: context,
-        value: "3",
-          keyType: KeyType.number
+        character: new Character(value: "3", keyType: KeyType.number)
       ),
 
 
 
 
       KeyButton(
+        entry: entry,
         context: context,
-        value: "+",
+        character: new Character(value: "+", keyType: KeyType.operation),
         color: Colors.primaries.elementAt(3),
-        keyType: KeyType.operation
       ),
     ],
   );
@@ -208,23 +208,23 @@ Widget _Row3(BuildContext context){
 
 
 
-Widget _Row4(BuildContext context){
+Widget _Row4(BuildContext context, Entry entry){
   double width  =MediaQuery.of(context).size.width * 0.25;
 
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
       KeyButton(
+        entry: entry,
         context: context,
-        value: "0",
-          keyType: KeyType.number
+        character: new Character(value: "0", keyType: KeyType.number),
       ),
 
 
       KeyButton(
         context: context,
-          value: ".",
-          keyType: KeyType.symbol
+          entry: entry,
+          character: new Character(value: ".", keyType: KeyType.symbol)
       ),
 
 
@@ -242,8 +242,8 @@ Widget _Row4(BuildContext context){
       KeyButton(
           context: context,
           color: Colors.pinkAccent,
-          value: "=",
-          keyType: KeyType.action
+          entry: entry,
+          character: new Character(value: "=", keyType: KeyType.action)
       ),
     ],
   );

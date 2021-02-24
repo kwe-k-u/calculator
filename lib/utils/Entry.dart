@@ -12,9 +12,9 @@ class Entry extends ChangeNotifier{
 
   ///Returns the list of characters for the calculation as a string
   String get calculationString {
-    String _string;
+    String _string = "";
     for (Character char in calculation)
-      _string+= char.value;
+      _string += char.value;
 
     return _string;
   }
