@@ -24,7 +24,8 @@ class _CalculationScreenState extends State<CalculationScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            EntryScreen(context, _string),
+            EntryScreen(string: _string),
+
             KeyPad()
           ],
         ),
