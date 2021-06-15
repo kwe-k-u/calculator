@@ -1,10 +1,12 @@
 
 import 'package:calculator/UI/Widgets/KeyPadButton.dart';
+import 'package:calculator/utils/Character.dart';
 import 'package:calculator/utils/Entry.dart';
+import 'package:calculator/utils/KeyType.dart';
 import 'package:flutter/material.dart';
 
 class KeyPad extends StatelessWidget {
-  Entry entry;
+  final Entry entry;
 
   KeyPad(this.entry);
 
