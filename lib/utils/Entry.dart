@@ -1,5 +1,7 @@
 
 import 'package:calculator/UI/Widgets/KeyPadButton.dart';
+import 'package:calculator/utils/Character.dart';
+import 'package:calculator/utils/KeyType.dart';
 import 'package:flutter/cupertino.dart';
 
 ///A class to store the calculation data
@@ -175,14 +177,3 @@ class Entry extends ChangeNotifier{
 
 
 
-
-
-
-
-///Object to represent entered characters and help process them
-class Character{
-  String value;
-  KeyType keyType;
-
-  Character({this.value,this.keyType});
-}

@@ -1,4 +1,6 @@
+import 'package:calculator/utils/Character.dart';
 import 'package:calculator/utils/Entry.dart';
+import 'package:calculator/utils/KeyType.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -6,22 +8,14 @@ import 'package:provider/provider.dart';
 
 
 
-enum KeyType{
-  number, /// digits used in calculation
-  operation, /// mathematical operatons
-  action, /// actions such as delete and equal to
-  symbol, ///symbols such as brackets
-  constant,/// constants such as pi
-}
-
 
 class KeyButton extends StatelessWidget {
-  BuildContext context;
-  Character character;
+  final BuildContext context;
+  final Character character;
   Color color = Colors.black;
   Color keyColor = Colors.white;
-  Function onPressed;
-  Entry entry;
+  final Function onPressed;
+  final Entry entry;
 
 
   KeyButton({
