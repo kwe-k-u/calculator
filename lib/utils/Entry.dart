@@ -71,69 +71,110 @@ class Entry extends ChangeNotifier{
 
 
 
-  double _calculate(){
-    //per the algorithm used, after all the operators have been iterated over, only
-    //one value will remain in the operand array. That value is the result of the
-    //evalution of the calculation
-    List<double> operands = [];
-    List<Character> operators = [];
-    String _temp = ""; ///Temporary string to store the current sequence of digits
 
 
 
-    //sorting entrys
-    for (int index = 0; index < _calculation.length; index++) {
-      Character char = _calculation.elementAt(index);
-      //character is a digit or symbol (decimal or bracket)
-      if (char.keyType == KeyType.number || char.keyType == KeyType.symbol) {
-        _temp += char.value;
-        // print(char.value);
-      } else if (char.keyType == KeyType.operation) { //if character is an operation +-*/
-        operators.add(char);
-        operands.add(_parseNumber(_temp));
-        _temp = "";
-        // print(char.value);
+///Calculates the result of the entries using bodmas
+  double _calculate(){//todo include to support brachets
+    /*
+    * To calculate the result of an entry, all the characters are iterated over,
+    * seeking the indexes of the operands. Using the indexes, the joining characters
+    * are evaluated based on the operator, with the three characters (operands and operators)
+    * removed and replaced with their value.
+    */
+    List<dynamic> _entries = [];
+    List<Character> bodmas = [
+      new Character(value:"/", keyType: KeyType.operation),
+      new Character(value:"x", keyType: KeyType.operation),
+      new Character(value:"+", keyType: KeyType.operation),
+      new Character(value:"-", keyType: KeyType.operation),
+    ]; ///contains the operators arranged in bodmas order
+    String _temp = "";
+    //iterating through the user's character entries to convert them into numbers and operators
+      for (int index = 0; index < _calculation.length; index++) {
+        Character char = _calculation.elementAt(index);
+
+        //character is a digit or symbol (decimal or bracket)
+        if (char.keyType == KeyType.number || char.keyType == KeyType.symbol) {
+          _temp += char.value;
+
+        } else if (char.keyType == KeyType.operation) { //if character is an operation +-*/
+
+          _entries.add(_parseNumber(_temp));
+          _entries.add(char);
+          _temp = "";
+          // print(char.value);
+        }
+        if (index+1 == _calculation.length) {
+          _entries.add(_parseNumber(_temp));
+        }
       }
-      if (index+1 == _calculation.length) {
-        operands.add(_parseNumber(_temp));
-      }
+
+
+      //performing calculations
+    int _index = 0;//index of the current operator
+    Character current = bodmas[_index];
+    
+    while (_entries.length > 1){
+        current = bodmas[_index];
+
+        _entries.firstWhere((element) {
+          if (element != current)//if this isn't the current operator
+            return false;
+          
+          //if the current operator has been found, get it's index
+          int charIndex = _entries.indexOf(element);//todo replace (increases runtime to n^2)
+
+          //perform calculation with elements that surround the operator
+          Character operation = _entries.elementAt(charIndex);
+
+
+          switch(operation.value){
+                case "+": //Addition
+                 _entries.insert(charIndex+2, _add(_entries.elementAt(charIndex-1), _entries.elementAt(charIndex+1)) );
+                  _entries.removeAt(charIndex+1);
+                  _entries.removeAt(charIndex);
+                  _entries.removeAt(charIndex-1);
+                  break;
+
+                case "-"://subtraction
+                  _entries.insert(charIndex+2, _subtract(_entries.elementAt(charIndex-1), _entries.elementAt(charIndex+1)) );
+                  _entries.removeAt(charIndex+1);
+                  _entries.removeAt(charIndex);
+                  _entries.removeAt(charIndex-1);
+                  break;
+
+                case "x"://multiplication
+                  _entries.insert(charIndex+2, _multiply(_entries.elementAt(charIndex-1), _entries.elementAt(charIndex+1)) );
+                  _entries.removeAt(charIndex+1);
+                  _entries.removeAt(charIndex);
+                  _entries.removeAt(charIndex-1);
+                  break;
+
+                case "/"://division
+                  _entries.insert(charIndex+2, _divide(_entries.elementAt(charIndex-1), _entries.elementAt(charIndex+1)) );
+                  _entries.removeAt(charIndex+1);
+                  _entries.removeAt(charIndex);
+                  _entries.removeAt(charIndex-1);
+                  break;
+
+                default:
+                  throw Exception("Error with ${operation.value}");
+          }
+
+          return true;
+        },
+        orElse: (){
+          //if no operator exist
+          _index++;
+        });
+        
+        
     }
-    print("operators ${operators.toString()}");
-    print("operands ${operands.toString()}");
+    
+    double result = _entries.elementAt(0);
 
-
-    for (Character operation in operators){
-      switch(operation.value){
-        case "+": //Addition
-         operands.insert(0, _add(operands.elementAt(0), operands.elementAt(1)) );
-          operands.removeAt(1);
-          operands.removeAt(1);
-          break;
-
-        case "-"://subtraction
-          operands.insert(0, _subtract(operands.elementAt(0), operands.elementAt(1)) );
-          operands.removeAt(1);
-          operands.removeAt(1);
-          break;
-
-        case "x"://multiplication
-          operands.insert(0, _multiply(operands.elementAt(0), operands.elementAt(1)) );
-          operands.removeAt(1);
-          operands.removeAt(1);
-          break;
-
-        case "/"://division
-          operands.insert(0, _divide(operands.elementAt(0), operands.elementAt(1)) );
-          operands.removeAt(1);
-          operands.removeAt(1);
-          break;
-
-        default:
-          throw Exception("Error with ${operation.value}");
-      }
-    }
-
-    return operands.elementAt(0);
+      return result;
   }
 
   double _add(double first, double second){

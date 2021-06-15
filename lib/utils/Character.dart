@@ -7,4 +7,16 @@ class Character{
   KeyType keyType;
 
   Character({this.value,this.keyType});
+
+
+  @override
+  bool operator ==(Object o) {
+    Character other = o;
+    return this.value.compareTo(other.value) == 0 && this.keyType.index == other.keyType.index;
+  }
+
+  @override
+  // TODO: implement hashCode
+  int get hashCode => super.hashCode;
+
 }
