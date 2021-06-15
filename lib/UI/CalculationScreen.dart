@@ -2,6 +2,7 @@ import 'package:calculator/UI/HistoryScreen.dart';
 import 'package:calculator/UI/Widgets/EntryScreen.dart';
 import 'package:calculator/UI/Widgets/KeyPad.dart';
 import 'package:calculator/utils/Entry.dart';
+import 'package:calculator/utils/EntryStack.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,17 +13,23 @@ class CalculationScreen extends StatefulWidget {
 }
 
 class _CalculationScreenState extends State<CalculationScreen> {
-  String _string = "";
+  EntryStack history = new EntryStack();
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Calculator"),
+        centerTitle: true,
+      ),
       drawer: Drawer(
-        child: HistoryScreen(),
+        child: HistoryScreen(history: history),
       ),
 
 
-      body: Container(
+      body:
+      Container(
         child: ChangeNotifierProvider(
           create: (context) => Entry(),
 
@@ -33,7 +40,7 @@ class _CalculationScreenState extends State<CalculationScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   EntryScreen(entry: entry),
-                  KeyPad(entry)
+                  KeyPad(entry, this.history)
                 ],
               );
             },

@@ -4,22 +4,40 @@ import 'package:calculator/utils/Entry.dart';
 import 'package:flutter/cupertino.dart';
 
 class EntryStack extends ChangeNotifier{
-  _Node head; ///Pointer to the most recent entry
+  Node head; ///Pointer to the most recent entry
   int count = 0;///counter for number of entrys
 
 
-  EntryStack(this.head){
-    count ++;
+  EntryStack(){
+
+    // count ++;
     notifyListeners();
   }
 
 
   ///Adds an entry to the stack
   void addEntry(Entry entry){
-    _Node newNode = new _Node(previous: head, entry: entry);
-    this.head = newNode;
+    if (head != null){
+      Node newNode = new Node(previous: head, entry: entry);
+      this.head = newNode;
+    } else {
+
+    }
     count++;
     notifyListeners();
+  }
+
+
+  Entry elementAt(int index){
+    Node _current = head;
+    if (index.isNegative)
+      index = count + index;
+
+    for (int i = 0; i != index; i++){
+      _current = _current.previous;
+    }
+
+    return _current.entry;
   }
 
 
@@ -46,9 +64,9 @@ class EntryStack extends ChangeNotifier{
 
 
 
-class _Node{
-  _Node previous;
+class Node{
+  Node previous;
   Entry entry;
 
-  _Node({this.previous, this.entry});
+  Node({this.previous, this.entry});
 }

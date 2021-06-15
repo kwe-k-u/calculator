@@ -1,10 +1,10 @@
+import 'package:calculator/utils/Entry.dart';
 import 'package:flutter/material.dart';
 
 class HistoryListTile extends StatelessWidget {
-  Map<String,String> entry;
+  final Entry entry;
 
-  HistoryListTile({this.entry}){
-  }
+  HistoryListTile({this.entry});
 
 
   @override
@@ -16,8 +16,8 @@ class HistoryListTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
 
-           Text(this.entry['calculation'],),
-           Text("= ${entry['result']}"),
+           Text(this.entry.calculationString,),
+           Text("= ${entry.result}"),
 
           Divider(
             thickness: 1.5,

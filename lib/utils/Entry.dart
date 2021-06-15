@@ -109,6 +109,8 @@ class Entry extends ChangeNotifier{
         if (index+1 == _calculation.length) {
           _entries.add(_parseNumber(_temp));
         }
+
+
       }
 
 

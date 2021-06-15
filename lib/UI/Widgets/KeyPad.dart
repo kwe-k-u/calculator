@@ -2,13 +2,15 @@
 import 'package:calculator/UI/Widgets/KeyPadButton.dart';
 import 'package:calculator/utils/Character.dart';
 import 'package:calculator/utils/Entry.dart';
+import 'package:calculator/utils/EntryStack.dart';
 import 'package:calculator/utils/KeyType.dart';
 import 'package:flutter/material.dart';
 
 class KeyPad extends StatelessWidget {
   final Entry entry;
+  final EntryStack stack;
 
-  KeyPad(this.entry);
+  KeyPad(this.entry, this.stack);
 
 
   @override
@@ -21,7 +23,7 @@ class KeyPad extends StatelessWidget {
           _Row1(context, entry),
           _Row2(context, entry),
           _Row3(context, entry),
-          _Row4(context, entry),
+          _Row4(context, entry, this.stack),
         ],
       ),
     );
@@ -207,7 +209,7 @@ Widget _Row3(BuildContext context, Entry entry){
 
 
 
-Widget _Row4(BuildContext context, Entry entry){
+Widget _Row4(BuildContext context, Entry entry, EntryStack stack){
 
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -250,7 +252,7 @@ Widget _Row4(BuildContext context, Entry entry){
           entry: entry,
           character: new Character(value: "=", keyType: KeyType.action),
         onPressed: (){
-
+            stack.addEntry(entry);
         },
       ),
     ],
